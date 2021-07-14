@@ -1,4 +1,9 @@
 export const schema = gql`
+  type Count {
+    likes: Int!
+    dislikes: Int!
+    comments: Int!
+  }
   type Post {
     id: String!
     title: String!
@@ -7,6 +12,7 @@ export const schema = gql`
     createdAt: DateTime!
     user: User!
     userId: String!
+    _count: Count!
   }
 
   type Query {

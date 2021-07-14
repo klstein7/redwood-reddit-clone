@@ -11,12 +11,31 @@ export const beforeResolver = (rules: BeforeResolverSpecType) => {
 }
 
 export const posts = () => {
-  return db.post.findMany()
+  return db.post.findMany({
+    include: {
+      _count: {
+        select: {
+          likes: true,
+          dislikes: true,
+          comments: true
+        },
+      },
+    },
+  })
 }
 
 export const post = ({ id }: Prisma.PostWhereUniqueInput) => {
   return db.post.findUnique({
     where: { id },
+    include: {
+      _count: {
+        select: {
+          likes: true,
+          dislikes: true,
+          comments: true
+        },
+      },
+    },
   })
 }
 

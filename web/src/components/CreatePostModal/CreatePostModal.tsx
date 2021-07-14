@@ -60,9 +60,9 @@ const CreatePostModal = () => {
     <>
       <Button
         data-testid={'create-post-button'}
-        bg="blue.600"
-        onClick={onOpen}
+        variant="ghost"
         isDisabled={!currentUser}
+        onClick={onOpen}
       >
         <Stack direction="row" align="center">
           <FaPlusSquare size={15} />
@@ -70,7 +70,7 @@ const CreatePostModal = () => {
         </Stack>
       </Button>
 
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal isOpen={isOpen} onClose={onClose} isCentered>
         <ModalOverlay />
         <ModalContent>
           <Formik
