@@ -15,8 +15,7 @@ const UPSERT_USER = gql`
 `
 
 const Navbar = () => {
-  const { currentUser, logIn, logOut, reauthenticate, isAuthenticated } =
-    useAuth()
+  const { currentUser, logIn, logOut } = useAuth()
   const [upsertUser] = useMutation(UPSERT_USER)
 
   console.log(isAuthenticated)
@@ -38,8 +37,12 @@ const Navbar = () => {
     syncUser()
   }, [currentUser])
 
-  const handleOnLoginButtonClicked = () => {
-    logIn().then(() => reauthenticate())
+  const handleOnLoginButtonClicked = async () => {
+    await logIn()
+  }
+
+  const handleOnLogoutButtonClicked = async () => {
+    await logOut()
   }
 
   return (
@@ -74,7 +77,7 @@ const Navbar = () => {
               px={6}
               ml={2}
               colorScheme="facebook"
-              onClick={handleOnLoginButtonClicked}
+              onClick={handleOnLogoutButtonClicked}
             >
               Log out
             </Button>
