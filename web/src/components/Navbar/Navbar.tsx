@@ -39,7 +39,6 @@ const Navbar = () => {
 
   const handleOnLoginButtonClicked = async () => {
     await logIn()
-    location.reload()
   }
 
   return (
