@@ -15,7 +15,7 @@ const UPSERT_USER = gql`
 `
 
 const Navbar = () => {
-  const { currentUser, logIn, logOut } = useAuth()
+  const { currentUser, logIn, logOut, isAuthenticated } = useAuth()
   const [upsertUser] = useMutation(UPSERT_USER)
 
   console.log(isAuthenticated)
