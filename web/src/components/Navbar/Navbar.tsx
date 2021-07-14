@@ -15,8 +15,10 @@ const UPSERT_USER = gql`
 `
 
 const Navbar = () => {
-  const { currentUser, logIn, logOut, reauthenticate } = useAuth()
+  const { currentUser, logIn, logOut, isAuthenticated } = useAuth()
   const [upsertUser] = useMutation(UPSERT_USER)
+
+  console.log(isAuthenticated)
 
   useEffect(() => {
     const syncUser = async () => {
@@ -33,11 +35,11 @@ const Navbar = () => {
       }
     }
     syncUser()
-  }, [currentUser, upsertUser])
+  }, [currentUser])
 
   const handleOnLoginButtonClicked = async () => {
     await logIn()
-    await reauthenticate()
+    location.reload()
   }
 
   return (
