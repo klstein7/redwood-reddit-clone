@@ -23,7 +23,6 @@ const Navbar = () => {
 
   useEffect(() => {
     const syncUser = async () => {
-      await reauthenticate()
       if (currentUser) {
         await upsertUser({
           variables: {
@@ -41,6 +40,7 @@ const Navbar = () => {
 
   const handleOnLoginButtonClicked = async () => {
     await logIn()
+    console.log('test')
   }
 
   const handleOnLogoutButtonClicked = async () => {
